@@ -1,0 +1,175 @@
+~~~PERSON TABLE~~~
+-- Create a table called person that records a person's id, name, age, height ( in cm ), city, favorite_color.
+-- CREATE TABLE person (
+--   id SERIAL PRIMARY KEY,
+--   name VARCHAR(50),
+--   age INT,
+--   height INT,
+--   city VARCHAR(50),
+--   favorite_color VARCHAR(50)
+-- );
+
+-- Add 5 different people into the person database.
+-- INSERT INTO person
+-- (name, age, height, city, favorite_color)
+-- VALUES
+-- ('Alex', 25, 170, 'Provo', 'green'),
+-- ('Gabi', 22, 140, 'Provo', 'rose'),
+-- ('Sam', 23, 190, 'Rexburg', 'red'),
+-- ('Porter', 28, 172, 'Somewhere', 'Blue'),
+-- ('Ivy', 1, 42, 'Eagle Mountain', 'green');
+
+-- List all the people in the person table by height from tallest to shortest.
+-- SELECT * FROM person
+-- ORDER BY height DESC;
+-- List all the people in the person table by height from shortest to tallest.
+-- SELECT * FROM person
+-- ORDER BY height ASC;
+
+-- List all the people in the person table by age from oldest to youngest.
+-- SELECT * FROM person
+-- ORDER BY age DESC;
+
+-- List all the people in the person table older than age 20.
+-- SELECT * FROM person
+-- WHERE age > 20;
+
+-- List all the people in the person table that are exactly 18.
+-- SELECT * FROM person
+-- WHERE age = 18
+
+-- List all the people in the person table that are less than 20 and older than 30.
+-- SELECT * FROM person
+-- WHERE age BETWEEN 20 AND 30;
+
+-- List all the people in the person table that are not 27 (Use not equals).
+-- SELECT * FROM person
+-- WHERE age != 27;
+
+-- List all the people in the person table where their favorite color is not red.
+-- SELECT * FROM person
+-- WHERE favorite_color != 'red';
+
+-- List all the people in the person table where their favorite color is not red and is not blue.
+-- SELECT * FROM person
+-- WHERE favorite_color != 'red' AND favorite_color != 'Blue';
+
+-- List all the people in the person table where their favorite color is orange or green.
+-- SELECT * FROM person
+-- WHERE favorite_color = 'orange' OR favorite_color = 'green'
+
+-- List all the people in the person table where their favorite color is orange, green or blue (use IN).
+-- SELECT * FROM person
+-- WHERE favorite_color IN ('orange', 'green', 'Blue');
+
+-- List all the people in the person table where their favorite color is yellow or purple (use IN).
+-- SELECT * FROM person
+-- WHERE favorite_color IN ('yellow', 'purple');
+
+~~~ORDERS TABLE~~~
+-- Create a table called orders that records: order_id, person_id, product_name, product_price, quantity.
+-- CREATE TABLE orders (
+--   order_id SERIAL PRIMARY KEY,
+--   person_id INT,
+--   product_name TEXT,
+--   product_price NUMERIC,
+--   quantity INT
+--  )
+
+-- Add 5 orders to the orders table.
+-- INSERT INTO orders
+-- (person_id, product_name, product_price, quantity)
+-- VALUES
+-- (1, 'banana', 500, 3000),
+-- (2, 'dr p', 4, 1),
+-- (3, 'cactus', 5432, 8),
+-- (4, 'penny', 2, 3),
+-- (5, 'album', 10, 14);
+
+-- Select all the records from the orders table.
+-- SELECT * FROM orders
+
+-- Calculate the total number of products ordered.
+-- SELECT sum(quantity) FROM orders
+
+-- Calculate the total order price.
+-- SELECT sum(product_price) FROM orders
+
+-- Calculate the total order price by a single person_id.
+-- SELECT sum(product_price) FROM orders
+-- WHERE person_id = 1;
+
+~~~ARTIST TABLE~~~
+-- Add 3 new artists to the artist table. ( It's already created )
+-- INSERT INTO artist
+-- (name)
+-- VALUES
+-- ('borter pobinson'),
+-- ('WAVEDASH'),
+-- ('JYOCHO');
+
+-- Select 10 artists in reverse alphabetical order.
+-- SELECT * FROM artist
+-- ORDER BY name DESC
+-- LIMIT 10;
+
+-- Select 5 artists in alphabetical order.
+-- SELECT * FROM artist
+-- ORDER BY name ASC
+-- LIMIT 5;
+
+-- Select all artists that start with the word 'Black'.
+-- SELECT * FROM artist
+-- WHERE name LIKE 'Black%';
+
+-- Select all artists that contain the word 'Black'.
+-- SELECT * FROM artist
+-- WHERE name LIKE '%Black%';
+
+~~~EMPLOYEE TABLE~~~
+-- List all employee first and last names only that live in Calgary.
+-- SELECT first_name, last_name FROM employee
+-- WHERE city = 'Calgary';
+
+-- Find the birthdate for the youngest employee.
+-- SELECT max(birth_date) FROM employee
+
+-- Find the birthdate for the oldest employee.
+-- SELECT min(birth_date) FROM employee
+
+-- Find everyone that reports to Nancy Edwards (Use the ReportsTo column).
+-- SELECT * FROM employee
+-- WHERE reports_to = 2;
+
+-- Count how many people live in Lethbridge.
+-- SELECT count(*) FROM employee
+-- WHERE city = 'Lethbridge';
+
+~~~INVOICE TABLE~~~
+-- Count how many orders were made from the USA.
+-- SELECT count(*) FROM invoice
+-- WHERE billing_country = 'USA';
+
+-- Find the largest order total amount.
+-- SELECT max(total) FROM invoice;
+
+-- Find the smallest order total amount.
+-- SELECT min(total) FROM invoice;
+
+-- Find all orders bigger than $5.
+-- SELECT * FROM invoice
+-- WHERE total > 5;
+
+-- Count how many orders were smaller than $5.
+-- SELECT count(*) FROM invoice
+-- WHERE total < 5;
+
+-- Count how many orders were in CA, TX, or AZ (use IN).
+-- SELECT count(*) FROM invoice
+-- WHERE billing_state IN ('CA', 'TX', 'AZ');
+
+-- Get the average total of the orders.
+-- SELECT avg(total) FROM invoice
+
+-- Get the total sum of the orders.
+-- SELECT sum(total) FROM invoice
